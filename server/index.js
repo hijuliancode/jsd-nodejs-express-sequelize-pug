@@ -2,6 +2,7 @@
 const express = require('express')
 const path = require('path')
 const routes = require('./routes')
+const configs = require('./config')
 
 // Configurar express
 const app = express()
@@ -14,6 +15,12 @@ app.set('views', path.join(__dirname, './views'))
 
 // cargar una carpeta estatica llamada public
 app.use(express.static('public'))
+
+// Validar si estamos en desarrollo o producción
+const config = configs[app.get('env')]
+
+// Creamos la variable para el sitio web
+app.locals.titulo = config.nombredelsitio;
 
 // Muestra el año actual
 app.use((req, res, next) => {
