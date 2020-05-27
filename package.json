@@ -1,0 +1,24 @@
+{
+  "name": "22-nodejs-intro",
+  "version": "1.0.0",
+  "description": "Aprendiendo NodeJS, Express y Sequelize",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hijuliancode/jsd-nodejs-express-sequelize-pug.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "sequelize"
+  ],
+  "author": "hijuliancode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hijuliancode/jsd-nodejs-express-sequelize-pug/issues"
+  },
+  "homepage": "https://github.com/hijuliancode/jsd-nodejs-express-sequelize-pug#readme"
+}
