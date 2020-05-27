@@ -26,9 +26,6 @@ app.locals.titulo = config.nombredelsitio;
 app.use((req, res, next) => {
   const fecha = new Date()
   res.locals.fechaActual = fecha.getFullYear() // Locals son variables de NodeJS que Node/express va a reconocer y pasar entre los distintos archivos
-  res.locals.saludo = 'Hola'
-  console.log(res.locals);
-  
   return next()
 })
 
