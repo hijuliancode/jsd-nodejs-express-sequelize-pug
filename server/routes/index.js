@@ -24,6 +24,13 @@ module.exports = () => {
       })
       .catch(error => console.error('=> Error', error))
   })
+  router.get('/viajes/:id', (req, res) => {
+    Viaje.findByPk(req.params.id)
+      .then(viaje => res.render('viaje', {
+        viaje // Object Literal Enhancements = viajes: viajes
+      }))
+      .catch(error => console.error('=> Error', error))
+  })
   router.get('/testimoniales', (req, res) => {
     res.render('testimoniales', {
       tituloPagina: 'Testimoniales'
