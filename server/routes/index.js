@@ -33,9 +33,13 @@ module.exports = () => {
       .catch(error => console.error('=> Error', error))
   })
   router.get('/testimoniales', (req, res) => {
-    res.render('testimoniales', {
-      tituloPagina: 'Testimoniales'
-    })
+    Testimonial.findAll()
+      .then(testimoniales => {
+        res.render('testimoniales', {
+          tituloPagina: 'Testimoniales',
+          testimoniales // Object Literal Enhancements = viajes: viajes
+        })
+      })
   })
   // Cuando se llena el formulario de testimoniales
   router.post('/testimoniales', (req, res) => {
