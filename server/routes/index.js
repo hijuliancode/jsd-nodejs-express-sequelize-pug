@@ -57,6 +57,12 @@ module.exports = () => {
 
     if(errores.length) {
       // Muestra la vista con errores
+      res.render('testimoniales', {
+        errores,
+        nombre,
+        correo,
+        mensaje
+      })
     } else {
       // Almacenamos en DB
     }
