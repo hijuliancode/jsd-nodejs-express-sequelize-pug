@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const Viaje = require('../models/Viajes')
+const Testimonial = require('../models/Testimonial')
 
 module.exports = () => {
   router.get('/', (req, res) => {
@@ -65,6 +66,13 @@ module.exports = () => {
       })
     } else {
       // Almacenamos en DB
+      Testimonial.create({
+        nombre,
+        correo,
+        mensaje
+      })
+      .then(testimonial => res.redirect('/testimoniales'))
+      .catch(error => console.error(error))
     }
 
   })
