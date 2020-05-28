@@ -6,9 +6,17 @@ const Testimonial = require('../models/Testimonial')
 
 module.exports = () => {
   router.get('/', (req, res) => {
-    res.render('index', {
-      clase: 'home'
+    Viaje.findAll({
+      limit: 3
     })
+      .then(viajes => {
+        res.render('index', {
+          tituloPagina: 'Viajes',
+          clase: 'home',
+          viajes // Object Literal Enhancements = viajes: viajes
+        })
+      })
+      .catch(error => console.error('=> Error', error))
   })
   router.get('/nosotros', (req, res) => {
     res.render('nosotros', {
