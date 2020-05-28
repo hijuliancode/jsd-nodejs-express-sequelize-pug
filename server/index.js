@@ -4,6 +4,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const routes = require('./routes')
 const configs = require('./config')
+const { log } = require('console')
 
 // db.authenticate()
 //   .then(() => console.log('DB Conectada') )
@@ -31,6 +32,7 @@ app.locals.titulo = config.nombredelsitio;
 app.use((req, res, next) => {
   const fecha = new Date()
   res.locals.fechaActual = fecha.getFullYear() // Locals son variables de NodeJS que Node/express va a reconocer y pasar entre los distintos archivos
+  res.locals.ruta = req.path // Variable ruta para poder activar la navegación en el header
   return next()
 })
 
