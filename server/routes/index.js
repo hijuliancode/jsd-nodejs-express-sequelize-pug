@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
+const Viaje = require('../models/Viajes')
+
 module.exports = () => {
   router.get('/', (req, res) => {
     res.render('index', {
@@ -13,9 +15,14 @@ module.exports = () => {
     })
   })
   router.get('/viajes', (req, res) => {
-    res.render('viajes', {
-      tituloPagina: 'Viajes'
-    })
+    Viaje.findAll()
+      .then(viajes => {
+        res.render('viajes', {
+          tituloPagina: 'Viajes',
+          viajes // Object Literal Enhancements = viajes: viajes
+        })
+      })
+      .catch(error => console.error('=> Error', error))
   })
   router.get('/testimoniales', (req, res) => {
     res.render('testimoniales', {
