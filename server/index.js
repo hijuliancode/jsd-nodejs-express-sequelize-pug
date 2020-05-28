@@ -48,5 +48,4 @@ const port = process.env.PORT || 3000
 
 app.listen(port, host, () => {
   console.log('El servidor esta funcionando');
-  
 })
