@@ -36,5 +36,31 @@ module.exports = () => {
       tituloPagina: 'Testimoniales'
     })
   })
+  // Cuando se llena el formulario de testimoniales
+  router.post('/testimoniales', (req, res) => {
+    console.log(req.body);
+    // Validar que todos los campos esten llenos
+    let {nombre, correo, mensaje} = req.body
+
+    let errores = []
+    if(!nombre) {
+      errores.push({'mensaje': 'Agrega tu nombre'})
+    }
+    if(!correo) {
+      errores.push({'mensaje': 'Agrega tu correo'})
+    }
+    if(!mensaje) {
+      errores.push({'mensaje': 'Agrega tu mensaje'})
+    }
+
+    // Revisar en caso de que haya o no errores
+
+    if(errores.length) {
+      // Muestra la vista con errores
+    } else {
+      // Almacenamos en DB
+    }
+
+  })
   return router;
 }

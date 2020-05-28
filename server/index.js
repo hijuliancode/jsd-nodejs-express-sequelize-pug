@@ -1,6 +1,7 @@
 // Importar express
 const express = require('express')
 const path = require('path')
+const bodyParser = require('body-parser')
 const routes = require('./routes')
 const configs = require('./config')
 
@@ -32,6 +33,9 @@ app.use((req, res, next) => {
   res.locals.fechaActual = fecha.getFullYear() // Locals son variables de NodeJS que Node/express va a reconocer y pasar entre los distintos archivos
   return next()
 })
+
+// Ejecutamos el body-parser
+app.use(bodyParser.urlencoded({extended: true }))
 
 // Cargar las rutas
 app.use('/', routes())
