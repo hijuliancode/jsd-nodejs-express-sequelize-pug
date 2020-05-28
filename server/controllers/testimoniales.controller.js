@@ -1,15 +1,13 @@
 const Testimonial = require("../models/Testimonial")
 
-exports.infoTestimoniales = (req, res) => {
-  Testimonial.findAll()
-    .then(testimoniales => {
-      res.render('testimoniales', {
-        tituloPagina: 'Testimoniales',
-        testimoniales // Object Literal Enhancements = viajes: viajes
-      } )
-    })
+exports.infoTestimoniales = async (req, res) => {
+  const testimoniales = await Testimonial.findAll()
+  res.render('testimoniales', {
+    tituloPagina: 'Testimoniales',
+    testimoniales // Object Literal Enhancements = viajes: viajes
+  })
 }
-exports.guardarTestimonial = (req, res) => {
+exports.guardarTestimonial = async (req, res) => {
   // Validar que todos los campos esten llenos
   let {nombre, correo, mensaje} = req.body
 
@@ -28,20 +26,22 @@ exports.guardarTestimonial = (req, res) => {
 
   if(errores.length) {
     // Muestra la vista con errores
+    const testimoniales = await Testimonial.findAll()
     res.render('testimoniales', {
       errores,
       nombre,
       correo,
-      mensaje
+      mensaje,
+      testimoniales,
+      tituloPagina: 'Testimoniales'
     })
   } else {
     // Almacenamos en DB
-    Testimonial.create({
+    await Testimonial.create({
       nombre,
       correo,
       mensaje
     })
-    .then(testimonial => res.redirect('/testimoniales'))
-    .catch(error => console.error(error))
+    res.redirect('/testimoniales')
   }
 }
