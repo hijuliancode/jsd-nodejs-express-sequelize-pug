@@ -4,7 +4,6 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const routes = require('./routes')
 const configs = require('./config')
-const { log } = require('console')
 
 // db.authenticate()
 //   .then(() => console.log('DB Conectada') )
