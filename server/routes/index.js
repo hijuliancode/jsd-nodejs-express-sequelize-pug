@@ -7,7 +7,7 @@ const Testimonial = require('../models/Testimonial')
 module.exports = () => {
   router.get('/', (req, res) => {
     res.render('index', {
-      tituloPagina: 'Inicio'
+      clase: 'home'
     })
   })
   router.get('/nosotros', (req, res) => {
