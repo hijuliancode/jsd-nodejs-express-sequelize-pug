@@ -3,11 +3,10 @@ const express = require('express')
 const path = require('path')
 const routes = require('./routes')
 const configs = require('./config')
-const db = require('./config/database')
 
-db.authenticate()
-  .then(() => console.log('DB Conectada') )
-  .catch(error => console.error('error al conectar => ', error))
+// db.authenticate()
+//   .then(() => console.log('DB Conectada') )
+//   .catch(error => console.error('error al conectar => ', error))
 
 // Configurar express
 const app = express()
